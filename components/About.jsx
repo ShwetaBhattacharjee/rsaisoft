@@ -1,13 +1,13 @@
-import { assets, infoList, toolsData } from '@/assets/assets';
+import { assets } from '@/assets/assets';
 import Image from 'next/image';
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 const About = ({ isDarkMode }) => {
   return (
     <motion.div
       id="about"
-      className="w-full px-[12%] py-10 scroll-mt-20"
+      className="w-full px-[10%] py-10 scroll-mt-20"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -30,131 +30,67 @@ const About = ({ isDarkMode }) => {
         About Us
       </motion.h2>
 
-      {/* First Section with user_image */}
+      {/* Row Layout: Image - Chat Bubbles - Image */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="flex w-full flex-col lg:flex-row items-center gap-20 my-20"
+        className="flex flex-col lg:flex-row gap-10 my-20 items-center w-full"
       >
+        {/* Left Image (Same size as Right Image) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-64 sm:w-80 rounded-3xl max-w-none"
+          className="flex-shrink-0 w-[350px] h-[350px]"
         >
           <Image
             src={assets.user_image}
-            alt="user"
-            width={300}
-            height={300}
-            className="w-full rounded-3xl"
+            alt="user-image"
+            width={350}
+            height={350}
+            className="rounded-3xl w-full h-full object-cover"
           />
         </motion.div>
 
+        {/* Chat Bubble Descriptions in Middle */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex-1"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col space-y-6 w-full max-w-2xl"
         >
-          <p className="mb-10 max-w-2xl font-Ovo">
-          Have 9 years of experience with various network traversal and streaming protocols. Currently working with a field of AI, computer vision where we use the network streaming and models to accurately and efficiently detects and classify various objects. Have experience making AI models such as Face mask detection, WheelChair detection, Retail food classification.
-          </p>
+          {/* First Chat Bubble (Pointing to Left Image) */}
+          <div className="relative bg-blue-200 text-gray-700 dark:text-white p-6 rounded-2xl shadow-md">
+            <p>
+              9 years of experience in AI and computer vision, specializing in network traversal and streaming protocols. Built AI models like face mask detection, wheelchair detection, and retail food classification.
+            </p>
+            <div className="absolute -left-4 top-4 w-6 h-6 bg-blue-200 transform rotate-45"></div>
+          </div>
 
-          {/* Info List */}
-          <motion.ul
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
-          >
-            {infoList.map(({ icon, iconDark, title, description }, index) => (
-              <motion.li
-                whileHover={{ scale: 1.05 }}
-                className="border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
-                key={index}
-              >
-                <Image
-                  src={isDarkMode ? iconDark : icon}
-                  alt={title}
-                  width={28}
-                  height={28}
-                  className="w-7 mt-3"
-                />
-                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
-                  {title}
-                </h3>
-                <p className="text-gray-600 text-sm dark:text-white/80">
-                  {description}
-                </p>
-              </motion.li>
-            ))}
-          </motion.ul>
+          {/* Second Chat Bubble (Pointing to Right Image) */}
+          <div className="relative bg-blue-200 text-gray-700 dark:text-white p-6 rounded-2xl shadow-md self-end">
+            <p>
+              Expert in Next.js, React, Python, ASP.NET, AI, and NLP. IEEE-published author with experience in chatbot development and multi-vendor platforms. Certified by MINDSPARKS'20 for Line Following Robot.
+            </p>
+            <div className="absolute -right-4 top-4 w-6 h-6 bg-blue-200 transform rotate-45"></div>
+          </div>
         </motion.div>
-      </motion.div>
 
-      {/* New Section with user_image1 */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="flex w-full flex-col lg:flex-row items-center gap-20 my-20"
-      >
+        {/* Right Image (Same size as Left Image) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-64 sm:w-80 rounded-3xl max-w-none"
+          className="flex-shrink-0 w-[350px] h-[350px]"
         >
           <Image
-            src={assets.user_image1} 
+            src={assets.user_image1}
             alt="user-image1"
-            width={300} 
-            height={300} 
-            className="w-full rounded-3xl"
+            width={350}
+            height={350}
+            className="rounded-3xl w-full h-full object-cover"
           />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex-1"
-        >
-          <p className="mb-10 max-w-2xl font-Ovo">
-          Expert in Next.js, React, Python, ASP.NET, AI, and NLP. IEEE-published author with leadership experience in chatbot development and web solutions. Contributed to AI research with multiple IEEE publications. Skilled in single and multi-vendor platforms, ERP systems, and chatbot development. Certified by MINDSPARKS'20 for Line Following Robot.
-          </p>
-
-          {/* Info List */}
-          <motion.ul
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
-          >
-            {infoList.map(({ icon, iconDark, title, description }, index) => (
-              <motion.li
-                whileHover={{ scale: 1.05 }}
-                className="border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
-                key={index}
-              >
-                <Image
-                  src={isDarkMode ? iconDark : icon}
-                  alt={title}
-                  width={28}
-                  height={28}
-                  className="w-7 mt-3"
-                />
-                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
-                  {title}
-                </h3>
-                <p className="text-gray-600 text-sm dark:text-white/80">
-                  {description}
-                </p>
-              </motion.li>
-            ))}
-          </motion.ul>
         </motion.div>
       </motion.div>
     </motion.div>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import user_image from './user-image.png';
 import user_image1 from './user-image1.png';
 import code_icon from './code-icon.png';
@@ -80,33 +82,44 @@ export const assets = {
 
 export const workData = [
     {
-        title: 'Frontend project',
-        description: 'Web Design',
+        title: 'PDFScanner RS',
+        description: 'Scan pdf',
         bgImage: '/work-1.png',
+        link: 'https://play.google.com/store/apps/details?id=com.rssoft.pdfscanner', // Link added
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
+        title: 'Sketch Easy',
+        description: 'Sketch and Paint',
         bgImage: '/work-2.png',
     },
     {
-        title: 'Photography site',
+        title: 'Ecommerce site',
         description: 'Web Design',
         bgImage: '/work-3.png',
     },
     {
-        title: 'UI/UX designing',
+        title: 'Responsive design',
         description: 'UI/UX Design',
         bgImage: '/work-4.png',
     },
-]
+];
 
 export const serviceData = [
     { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
     { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
-]
+    {
+        icon: assets.ui_icon,
+        title: 'AI Model Training & Data Collection',
+        description: 'AI model training and data collection involve designing and training models with diverse datasets to improve accuracy and robustness.',
+        link: ''
+    },
+    {
+        icon: assets.graphics_icon,
+        title: 'Research & Publications',
+        description: 'Research and publications focus on developing solutions, documenting findings, and contributing to academic growth through experiments and papers.',
+        link: ''
+    },
+];
 
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript React Js, Next Js' },
@@ -117,3 +130,28 @@ export const infoList = [
 export const toolsData = [
     assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
 ];
+
+const WorkComponent = () => {
+  return (
+    <div className="work-container">
+      {/* Iterate over the workData array */}
+      {workData.map((work, index) => (
+        <div key={index} className="work-item">
+          {work.link ? (
+            <a href={work.link} target="_blank" rel="noopener noreferrer" className="block bg-cover bg-center rounded-xl p-5 my-4" style={{ backgroundImage: `url(${work.bgImage})` }}>
+              <h3 className="text-white font-semibold text-xl">{work.title}</h3>
+              <p className="text-white">{work.description}</p>
+            </a>
+          ) : (
+            <div className="block bg-cover bg-center rounded-xl p-5 my-4" style={{ backgroundImage: `url(${work.bgImage})` }}>
+              <h3 className="text-white font-semibold text-xl">{work.title}</h3>
+              <p className="text-white">{work.description}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default WorkComponent;
