@@ -53,12 +53,12 @@ const About = ({ isDarkMode }) => {
           />
         </motion.div>
 
-        {/* Chat Bubble Descriptions in Middle */}
+        {/* Chat Bubble Descriptions in Middle with margin */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col space-y-6 w-full max-w-2xl"
+          className="flex flex-col space-y-6 w-full max-w-2xl mx-4" // Added mx-4 for margin on both sides
         >
           {/* First Chat Bubble (Pointing to Left Image) */}
           <div className="relative bg-blue-200 text-gray-700 dark:text-white p-6 rounded-2xl shadow-md">
