@@ -1,11 +1,17 @@
 const BASE_URL = "https://rsaisoft.vercel.app";
 
+// Function to generate current date in YYYY-MM-DD format
+function getCurrentDate(): string {
+  const today = new Date();
+  return today.toISOString().split("T")[0]; // Extracts only YYYY-MM-DD
+}
+
 function generateSiteMap(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>${BASE_URL}/</loc>
-      <lastmod>2024-12-25</lastmod>
+      <lastmod>${getCurrentDate()}</lastmod>
       <priority>1.0</priority>
     </url>
   </urlset>`;
