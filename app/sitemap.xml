@@ -11,15 +11,17 @@ function generateSiteMap(): string {
   </urlset>`;
 }
 
+// Optional: Improve performance by using Edge runtime
+export const runtime = "edge";
+
 export async function GET() {
   try {
-    // Generate the XML sitemap
     const sitemap = generateSiteMap();
 
-    // Return the static sitemap with proper headers
     return new Response(sitemap, {
       headers: {
-        "Content-Type": "application/xml",
+        "Content-Type": "text/xml", // Some crawlers prefer text/xml over application/xml
+        "Cache-Control": "public, max-age=86400", // Cache for 24 hours
       },
     });
   } catch (error) {
