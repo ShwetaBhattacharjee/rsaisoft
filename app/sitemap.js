@@ -1,4 +1,4 @@
-const BASE_URL = "https://rsaisoft.vercel.app";
+const BASE_URL = "https://www.rsaisoft.info";
 
 // Function to generate the current date in YYYY-MM-DD format
 function getCurrentDate() {
