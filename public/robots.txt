@@ -3,5 +3,5 @@ Allow: /
 <<<<<<< HEAD
 Sitemap: https://www.rsaisoft.info/sitemap.xml 
 =======
-Sitemap: https://rsaisoft.vercel.app/sitemap.xml 
+Sitemap: https://www.rsaisoft.info/sitemap.xml 
 >>>>>>> 30d2c6c007ac463e5edf65475bf2863dc797774a
