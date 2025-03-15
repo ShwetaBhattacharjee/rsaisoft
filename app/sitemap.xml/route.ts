@@ -1,5 +1,5 @@
 export async function GET() {
-  const BASE_URL = "https://rsinfo.info"; // Ensure this matches your actual domain
+  const BASE_URL = "https://rsinfo.info"; // Make sure this is correct
   const currentDate = new Date().toISOString().split("T")[0];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -11,11 +11,10 @@ export async function GET() {
     </url>
   </urlset>`;
 
-  console.log("Generated Sitemap:\n", sitemap); // Debugging
-
   return new Response(sitemap, {
     headers: {
-      "Content-Type": "application/xml; charset=utf-8",
+      "Content-Type": "application/xml", // Explicitly set correct content type
+      "Cache-Control": "s-maxage=86400, stale-while-revalidate",
     },
   });
 }
