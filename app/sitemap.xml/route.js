@@ -13,7 +13,7 @@ export async function GET() {
 
   return new Response(sitemap, {
     headers: {
-      "Content-Type": "application/xml", // Ensures the correct content type
+      "Content-Type": "application/xml", // Ensures the correct content type ok
       "Cache-Control": "s-maxage=86400, stale-while-revalidate",
     },
   });
