@@ -9,6 +9,16 @@ export async function GET() {
       <lastmod>${currentDate}</lastmod>
       <priority>1.0</priority>
     </url>
+    <url>
+      <loc>${BASE_URL}/about</loc>
+      <lastmod>${currentDate}</lastmod>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>${BASE_URL}/services</loc>
+      <lastmod>${currentDate}</lastmod>
+      <priority>0.8</priority>
+    </url>
   </urlset>`;
 
   return new Response(sitemap, {
